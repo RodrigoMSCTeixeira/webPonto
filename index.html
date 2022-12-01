@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="js/autoClick.js"></script>
+    <title>Ponto</title>
+  </head>
+  <body>
+    <header></header>
+    <section>
+      <div class="counter">
+        <!-- <div id="days"></div> -->
+        <div id="hours"></div>
+        <div id="minutes"></div>
+        <div id="seconds"></div>
+      </div>
+      <div class="info">
+        <h5 id="finish"></h5>
+        <p id="finishHour"></p>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Hora Extra</th>
+          </tr>
+        </thead>
+        <tbody id="calendar-body" class="calendar-body"></tbody>
+      </table>
+
+      <form
+        name="submit-to-google-sheet"
+        onsubmit="return mySubmitFunction(event)"
+        class="form"
+      >
+        <input name="date" type="text" id="date" readonly />
+        <input name="start" type="text" id="start" readonly />
+        <input name="end" type="text" id="end" readonly />
+        <!-- <input name="extraHour" type="text" id="extraHour" readonly /> -->
+        <button type="submit" id="submit" onclick="exportData()">Send</button>
+      </form>
+    </section>
+    <script src="ts/index.ts" type="text/babel"></script>
+    <script src="js/axios.js"></script>
+  </body>
+</html>

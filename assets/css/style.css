@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #230505;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.counter div {
+  position: relative;
+  width: 60px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.counter div:nth-child(1)::after,
+.counter div:nth-child(2)::after {
+  content: ":";
+  position: absolute;
+  right: -4px;
+}
+
+.info {
+  position: relative;
+}
+
+.form {
+  display: none;
+}
+
+.table {
+  display: none;
+}
