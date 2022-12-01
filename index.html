@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="module" src="js/autoClick.js"></script>
-    <title>Ponto</title>
+    <title>Ponto TESTE</title>
   </head>
   <body>
     <header></header>
     <section>
       <div class="counter">
-        <!-- <div id="days"></div> -->
         <div id="hours"></div>
         <div id="minutes"></div>
         <div id="seconds"></div>
@@ -23,7 +21,6 @@
         <h5 id="finish"></h5>
         <p id="finishHour"></p>
       </div>
-
       <table class="table">
         <thead>
           <tr>
@@ -35,17 +32,33 @@
         </thead>
         <tbody id="calendar-body" class="calendar-body"></tbody>
       </table>
-
       <form
         name="submit-to-google-sheet"
         onsubmit="return mySubmitFunction(event)"
         class="form"
       >
+        <label for="date">Data</label>
         <input name="date" type="text" id="date" readonly />
+        <label for="start">Entrada</label>
         <input name="start" type="text" id="start" readonly />
+        <label for="intervalStart">Intervalo Saída</label>
+        <input name="intervalStart" type="text" id="intervalStart" readonly />
+        <label for="intervalEnd">Intervalo Retorno</label>
+        <input name="intervalEnd" type="text" id="intervalEnd" readonly />
+        <label for="exit">Saída Programada</label>
+        <input name="exit" type="text" id="exit" readonly />
+        <label for="end">Saída</label>
         <input name="end" type="text" id="end" readonly />
+        <!-- <label for="extraHour">Saída</label> -->
         <!-- <input name="extraHour" type="text" id="extraHour" readonly /> -->
-        <button type="submit" id="submit" onclick="exportData()">Send</button>
+        <button
+          type="submit"
+          id="submit"
+          onclick="exportData()"
+          class="buttonSubmit"
+        >
+          Send
+        </button>
       </form>
     </section>
     <script src="ts/index.ts" type="text/babel"></script>
