@@ -3,7 +3,7 @@ let hours: any = date.getHours()
 let minutes: any = date.getMinutes()
 let seconds: any = date.getSeconds()
 const isToday = new Date(Date.now())
-
+let count = 0
 const clock = () => {
     const date  = new Date()
     let hh: any = date.getHours()
@@ -12,12 +12,14 @@ const clock = () => {
     hh = hh < 10 ? `0${hh}` : hh
     mn = mn < 10 ? `0${mn}` : mn
     sc = sc < 10 ? `0${sc}` : sc
+    const inputcount: any = document.getElementById("count")
     const seconds: any = document.getElementById('seconds')
     const minutes: any = document.getElementById('minutes')
     const hours: any = document.getElementById('hours')
     seconds.innerText = sc
     minutes.innerText = mn
     hours.innerText = hh
+    inputcount.value = count++
 }
 
 const beforeStartCount = () => {
