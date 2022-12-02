@@ -37,14 +37,25 @@ body {
   right: -4px;
 }
 
-.info {
-  position: relative;
+.options {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: space-around;
+}
+
+.options button {
+  padding: 5px;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .form {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  align-items: center;
   background: #234763;
   padding: 10px;
   border-radius: 20px;

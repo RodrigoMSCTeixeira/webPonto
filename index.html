@@ -17,9 +17,10 @@
         <div id="minutes"></div>
         <div id="seconds"></div>
       </div>
-      <div class="info">
-        <h5 id="finish"></h5>
-        <p id="finishHour"></p>
+      <div class="options">
+        <button id="start">inciar jornada</button>
+        <button id="extraHour">iniciar hora extra</button>
+        <button id="end">finalizar jornada</button>
       </div>
       <table class="table">
         <thead>
@@ -40,25 +41,20 @@
         <label for="date">Data</label>
         <input name="date" type="text" id="date" readonly />
         <label for="start">Entrada</label>
-        <input name="start" type="text" id="start" readonly />
+        <input name="start" type="text" id="input" readonly />
         <label for="intervalStart">Intervalo Saída</label>
         <input name="intervalStart" type="text" id="intervalStart" readonly />
         <label for="intervalEnd">Intervalo Retorno</label>
         <input name="intervalEnd" type="text" id="intervalEnd" readonly />
         <label for="exit">Saída Programada</label>
         <input name="exit" type="text" id="exit" readonly />
+        <label for="extraHourStart">Hora Extra Inicio</label>
+        <input name="extraHourStart" type="text" id="extraHourStart" readonly />
+        <label for="extraHourEnd">Hora Extra Fim</label>
+        <input name="extraHourEnd" type="text" id="extraHourEnd" readonly />
         <label for="end">Saída</label>
-        <input name="end" type="text" id="end" readonly />
-        <!-- <label for="extraHour">Saída</label> -->
-        <!-- <input name="extraHour" type="text" id="extraHour" readonly /> -->
-        <button
-          type="submit"
-          id="submit"
-          onclick="exportData()"
-          class="buttonSubmit"
-        >
-          Send
-        </button>
+        <input name="end" type="text" id="output" readonly />
+        <button type="submit" id="submit" class="buttonSubmit">Send</button>
       </form>
     </section>
     <script src="ts/index.ts" type="text/babel"></script>
