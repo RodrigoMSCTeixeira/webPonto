@@ -1,8 +1,11 @@
-const hours = new Date().getHours()
-const minutes = new Date().getMinutes()
- const seconds = new Date().getSeconds() 
+let hours: any = new Date().getHours()
+let minutes: any = new Date().getMinutes()
+let seconds: any = new Date().getSeconds() 
 const isToday = new Date(Date.now())
 let totalHours: any = hours + 6
+let intervalStartHour = hours + 3
+let intervalStartMinutes: any =  minutes + 45
+let intervalEndMinutes = intervalStartMinutes + 15
 let totalMinutes: any = (totalHours - hours) * 60
 // const totalSeconds = totalMinutes * 60
 let countSeconds = 0
@@ -45,11 +48,21 @@ const clock = () => {
 const beforeStartCount = () => {
     const inputDate:any = document.getElementById('date')
     const inputStart:any = document.getElementById('start')
+    const inputIntervalStart: any = document.getElementById('intervalStart')
+    const inputIntervalEnd: any = document.getElementById('intervalEnd')
     const inputExit:any = document.getElementById('exit')
+    hours = hours < 10 ? `0${hours}` : hours
+    minutes = minutes < 10 ? `0${minutes}` : minutes
+    seconds = seconds < 10 ? `0${seconds}` : seconds
     totalHours = totalHours > 23 ?  `0${totalHours - 24}` : `${totalHours}`
-    totalMinutes = totalMinutes < 10 ? `0${totalMinutes}` : totalMinutes
+    intervalStartMinutes = intervalStartMinutes > 59 ? `${intervalStartMinutes - 60}` : intervalStartMinutes
+    intervalEndMinutes  = intervalEndMinutes > 59 ? `${intervalEndMinutes - 60}` : intervalEndMinutes
+    intervalStartMinutes = intervalStartMinutes < 10 ? `0${intervalStartMinutes}` : intervalStartMinutes
+    intervalEndMinutes = intervalEndMinutes < 10 ? `0${intervalEndMinutes}` : intervalEndMinutes
     inputDate.value = isToday.toLocaleDateString()
     inputStart.value = `${hours}:${minutes}:${seconds}`
+    inputIntervalStart.value = `${intervalStartHour}:${intervalStartMinutes}:${seconds}`
+    inputIntervalEnd.value = `${intervalStartHour}:${intervalEndMinutes}:${seconds}`
     inputExit.value = `${totalHours}:${minutes}:${seconds}`
 }
  
