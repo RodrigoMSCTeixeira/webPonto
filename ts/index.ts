@@ -1,60 +1,59 @@
 const hours = new Date().getHours()
 const minutes = new Date().getMinutes()
-const seconds = new Date().getSeconds() 
+ const seconds = new Date().getSeconds() 
 const isToday = new Date(Date.now())
-const totalHours = hours + 6
-const totalMinutes = (totalHours - hours) * 60
-const totalSeconds = totalMinutes * 60
+let totalHours: any = hours + 6
+let totalMinutes: any = (totalHours - hours) * 60
+// const totalSeconds = totalMinutes * 60
+let countSeconds = 0
+
+const clock = () => {
+    const date = new Date()
+    let hh: any = date.getHours()
+    let mn: any = date.getMinutes()
+    let sc: any = date.getSeconds()
+    const intervalStart = 9900
+    const intervalEnd = 10800
+    const totalSeconds = 21600
+    hh = hh < 10 ? `0${hh}` : hh
+    mn = mn < 10 ? `0${mn}` : mn
+    sc = sc < 10 ? `0${sc}` : sc
+    const seconds: any = document.getElementById('seconds')
+    const minutes: any = document.getElementById('minutes')
+    const hours: any = document.getElementById('hours')
+    seconds.innerText = sc
+    minutes.innerText = mn
+    hours.innerText = hh
+    countSeconds ++
+
+    if(countSeconds == intervalStart) {
+        const inputIntervalStart: any = document.getElementById('intervalStart')
+        inputIntervalStart.value = `${hh}:${mn}:${sc}`
+    }
+
+    if(countSeconds == intervalEnd) {
+        const inputIntervalEnd: any = document.getElementById('intervalEnd')
+        inputIntervalEnd.value = `${hh}:${mn}:${sc}`
+    }
+
+    if(countSeconds == totalSeconds) {
+      clearInterval(id)
+      stopCountdown()
+    }
+}
 
 const beforeStartCount = () => {
     const inputDate:any = document.getElementById('date')
     const inputStart:any = document.getElementById('start')
     const inputExit:any = document.getElementById('exit')
+    totalHours = totalHours > 23 ?  `0${totalHours - 24}` : `${totalHours}`
+    totalMinutes = totalMinutes < 10 ? `0${totalMinutes}` : totalMinutes
     inputDate.value = isToday.toLocaleDateString()
     inputStart.value = `${hours}:${minutes}:${seconds}`
     inputExit.value = `${totalHours}:${minutes}:${seconds}`
 }
  
-const refresh = (timer: number) => {
-    const seconds: any = document.getElementById('seconds')
-    const minutes: any = document.getElementById('minutes')
-    const hours: any = document.getElementById('hours')
-    let totalSeconds: any = timer % 60
-    let totalMinutes: any  = Math.floor((timer % (60 * 60)) / 60)
-    let totalHours: any = Math.floor((timer % (60 * 60 * 24)) / (60 * 60))
-    totalSeconds = totalSeconds < 10 ? `0${totalSeconds}` : totalSeconds
-    totalMinutes = totalMinutes < 10 ? `0${totalMinutes}` : totalMinutes
-    totalHours = totalHours < 10 ? `0${totalHours}` : totalHours
-    seconds.textContent = totalSeconds
-    minutes.textContent = totalMinutes
-    hours.textContent = totalHours
-}
-
-const countdown = (timer: number) => {
-    let sec = 0
-    const intervalStart = 9900
-    const intervalEnd = 10800
-   const count = () => {
-        if(timer === 0) {
-            stopCountdown(id)
-        } 
-        refresh(timer)
-        timer--
-        sec ++
-        if(sec === intervalStart) {
-            const inputIntervalStart: any = document.getElementById('intervalStart')
-            inputIntervalStart.value = `${jobInterval().hours}:${jobInterval().minutes}:${jobInterval().seconds}`
-        }
-        if(sec === intervalEnd) {
-            const inputIntervalEnd: any = document.getElementById('intervalEnd')
-            inputIntervalEnd.value = `${jobInterval().hours}:${jobInterval().minutes}:${jobInterval().seconds}`
-        }
-    }
-    const id = setInterval(count, 1000) 
-}
-
-const stopCountdown = (id: number) => {
-    clearInterval(id)
+const stopCountdown = () => {
     const table: any = document.getElementById('calendar-body')
     const row = document.createElement('tr')
     const finalHour = new Date().getHours()
@@ -79,18 +78,8 @@ const autoClick = () => {
     buttonSend.dispatchEvent(new MouseEvent("click"));
 };
 
-const jobInterval = () => {
-    const date = new Date()
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
-    const jobInterval =  {
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds
-    }
-    return jobInterval
-}
-
-countdown(totalSeconds)
 beforeStartCount()
+const id = setInterval(clock, 1000)
+
+
+
