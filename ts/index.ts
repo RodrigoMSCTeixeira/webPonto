@@ -21,7 +21,7 @@ const clock = () => {
 }
 
 const beforeStartCount = () => {
-    if(hours == 7 && minutes >= 30) {
+    if(hours == 17 && minutes >= 0) {
         let totalHours: any = hours + 6
         let intervalStartHour = 0
         let intervalStartTime: any = 0
@@ -123,8 +123,8 @@ optionFinish.addEventListener('click', () => {
 })
 
 const notificationMe = () => {
-    const notification = new Notification("Testando Notificação!", {
-      body: "Rodrigo Está testando",
+    const notification = new Notification("Web Ponto", {
+      body: "Atenção! Seu tempo está acabando, se precisar fazer hora extra, clique em 'solicitar hora extra', após o horário de saída!",
     });
 
     notification.onclick = () => {
