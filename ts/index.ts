@@ -3,7 +3,7 @@ let hours: any = date.getHours()
 let minutes: any = date.getMinutes()
 let seconds: any = date.getSeconds()
 const isToday = new Date(Date.now())
-let count = 0
+
 const clock = () => {
     const date  = new Date()
     let hh: any = date.getHours()
@@ -12,14 +12,12 @@ const clock = () => {
     hh = hh < 10 ? `0${hh}` : hh
     mn = mn < 10 ? `0${mn}` : mn
     sc = sc < 10 ? `0${sc}` : sc
-    const inputcount: any = document.getElementById("count")
     const seconds: any = document.getElementById('seconds')
     const minutes: any = document.getElementById('minutes')
     const hours: any = document.getElementById('hours')
     seconds.innerText = sc
     minutes.innerText = mn
     hours.innerText = hh
-    inputcount.value = count++
 }
 
 const beforeStartCount = () => {
@@ -95,12 +93,13 @@ const autoClick = () => {
 
 
 const extraHour = () => {
+    const inputStart: any = document.getElementById('input')
     let hh: any = document.getElementById('hours')?.innerText
     let mn: any = document.getElementById('minutes')?.innerText
     let sc: any = document.getElementById('seconds')?.innerText
     const end = '1330'
 
-    if(end != `${hh}${mn}`) {
+    if((`${hh}${mn}` > end) && (inputStart.value != '') ) {
         const inputExtraHourStart: any = document.getElementById('extraHourStart')
         inputExtraHourStart.value = `${hh}:${mn}:${sc}`
     }
@@ -123,7 +122,27 @@ optionFinish.addEventListener('click', () => {
     stopCountdown()
 })
 
+const notificationMe = () => {
+    const notification = new Notification("Testando Notificação!", {
+      body: "Rodrigo Está testando",
+    });
+
+    notification.onclick = () => {
+        window.open("");
+    };
+  };
+  
+  const notification = () => {
+    if (Notification.permission === "granted") {
+      notificationMe();
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission(function (permission) {
+        if (permission === "granted") {
+          notificationMe();
+        }
+      });
+    }
+  };
+
 const id = setInterval(clock, 1000)
-
-
-
+setTimeout(notification, 19800)

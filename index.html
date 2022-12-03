@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <title>Ponto</title>
   </head>
   <body>
     <header></header>
     <section>
+      <button id="alertSound" style="display: none"></button>
       <div class="counter">
         <div id="hours"></div>
         <div id="minutes"></div>
@@ -38,8 +40,6 @@
         onsubmit="return mySubmitFunction(event)"
         class="form"
       >
-        <label for="count">Atualizar</label>
-        <input name="count" type="text" id="count" readonly />
         <label for="date">Data</label>
         <input name="date" type="text" id="date" readonly />
         <label for="start">Entrada</label>
