@@ -145,4 +145,4 @@ const notificationMe = () => {
   };
 
 const id = setInterval(clock, 1000)
-setTimeout(notification, 19800)
+setTimeout(notification, 198000)
