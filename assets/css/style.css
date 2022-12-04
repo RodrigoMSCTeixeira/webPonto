@@ -30,6 +30,23 @@ body {
   font-weight: 500;
 }
 
+.countdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: #ff0600;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  color: #230505;
+}
+.countdown div {
+  position: relative;
+  width: 60px;
+  text-align: center;
+  font-weight: 500;
+}
+
 .counter div:nth-child(1)::after,
 .counter div:nth-child(2)::after {
   content: ":";

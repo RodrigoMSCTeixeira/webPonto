@@ -20,8 +20,42 @@ const clock = () => {
     hours.innerText = hh
 }
 
+const countDown = () => {
+    let day = new Date().getDate();
+    let endTime = hours + 6
+    const month = new Date().getMonth() + 1;
+    const year = new Date().getFullYear();
+    if(endTime > 23) {
+        day++
+    }
+    const endHour: any = document.getElementById('exit')
+    console.log(`${endTime}, ${endHour.value}`)
+    const countDate = new Date(`${month}/${day}/${year} ${endHour.value}`).getTime();
+    const newYear = () => {
+      const now = new Date().getTime();
+      const gap = countDate - now;
+      const second = 1000;
+      const minute = second * 60;
+      const hour = minute * 60;
+      const day = hour * 24;
+      let h: any = Math.floor((gap % day) / hour);
+      let m: any = Math.floor((gap % hour) / minute);
+      let s: any = Math.floor((gap % minute) / second);
+      h = h < 10 ? `0${h}` : h;
+      m = m < 10 ? `0${m}` : m;
+      s = s < 10 ? `0${s}` : s;
+      const hours: any = document.getElementById("hour")
+      const minutes: any = document.getElementById("minute")
+      const seconds: any  = document.getElementById("second")
+      hours.innerText = h;
+      minutes.innerText = m;
+      seconds.innerText = s;
+    };
+    setInterval(newYear, 1000);
+}
+
 const beforeStartCount = () => {
-    if(hours == 17 && minutes >= 0) {
+    if(hours >= 17 && minutes >= 0) {
         let totalHours: any = hours + 6
         let intervalStartHour = 0
         let intervalStartTime: any = 0
@@ -32,9 +66,9 @@ const beforeStartCount = () => {
             intervalStartHour = hours + 3
             intervalStartTime =  minutes - 15
         } 
-    
+
         let intervalEndTime: any =  intervalStartTime + 15
-    
+
         if (intervalEndTime > 59) {
             intervalEndTime = intervalEndTime - 60
         } else {
@@ -57,15 +91,12 @@ const beforeStartCount = () => {
         inputIntervalStart.value = `${intervalStartHour}:${intervalStartTime}:${seconds}`
         inputIntervalEnd.value = `${intervalEndHour}:${intervalEndTime}:${seconds}`
         inputExit.value = `${totalHours}:${minutes}:${seconds}`
+        countDown()
     }
-   
-
 }
  
 const stopCountdown = () => {
     const inputStart: any = document.getElementById('input')
-
-    console.log(inputStart.value)
     if(inputStart.value != '') {
         clearInterval(id)
         let finalHour: any = new Date().getHours()
@@ -145,4 +176,3 @@ const notificationMe = () => {
   };
 
 const id = setInterval(clock, 1000)
-setTimeout(notification, 198000)
