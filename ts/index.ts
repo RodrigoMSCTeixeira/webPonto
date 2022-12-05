@@ -57,7 +57,7 @@ const countDown = () => {
 }
 
 const beforeStartCount = () => {
-    if(hours >= 17 && minutes >= 0) {
+    if(hours >= 7 && minutes >= 30) {
         let totalHours: any = hours + 6
         let intervalStartHour = 0
         let intervalStartTime: any = 0

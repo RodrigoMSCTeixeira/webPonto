@@ -27,6 +27,7 @@ body {
   align-items: center;
   top: 2%;
   left: 2%;
+  animation: showClock 10s ease-in-out;
 }
 
 .clock::before {
@@ -187,4 +188,13 @@ body {
 
 .table {
   display: none;
+}
+
+@keyframes showClock {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
