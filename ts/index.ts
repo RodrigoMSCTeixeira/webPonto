@@ -6,32 +6,29 @@ const isToday = new Date(Date.now())
 
 const clock = () => {
     const date  = new Date()
-    let hh: any = date.getHours()
-    let mn: any = date.getMinutes()
-    let sc: any = date.getSeconds()
-    hh = hh < 10 ? `0${hh}` : hh
-    mn = mn < 10 ? `0${mn}` : mn
-    sc = sc < 10 ? `0${sc}` : sc
+    let hh: any = date.getHours() * 30
+    let mn: any = date.getMinutes() * 6
+    let sc: any = date.getSeconds() * 6
     const seconds: any = document.getElementById('seconds')
     const minutes: any = document.getElementById('minutes')
     const hours: any = document.getElementById('hours')
-    seconds.innerText = sc
-    minutes.innerText = mn
-    hours.innerText = hh
+    hours.style.transform = `rotateZ(${hh+(mn/12)}deg)`
+    minutes.style.transform = `rotateZ(${mn}deg)`
+    seconds.style.transform = `rotateZ(${sc}deg)`
 }
 
 const countDown = () => {
-    let day = new Date().getDate();
     let endTime = hours + 6
+    let day = new Date().getDate();
     const month = new Date().getMonth() + 1;
     const year = new Date().getFullYear();
     if(endTime > 23) {
         day++
     }
     const endHour: any = document.getElementById('exit')
-    console.log(`${endTime}, ${endHour.value}`)
     const countDate = new Date(`${month}/${day}/${year} ${endHour.value}`).getTime();
-    const newYear = () => {
+
+    const count = () => {
       const now = new Date().getTime();
       const gap = countDate - now;
       const second = 1000;
@@ -50,8 +47,13 @@ const countDown = () => {
       hours.innerText = h;
       minutes.innerText = m;
       seconds.innerText = s;
-    };
-    setInterval(newYear, 1000);
+      if(h == 0) {
+        clearInterval(idCountdown)
+      } else if (h == 0 && m == 30) {
+        notification()
+      }
+    }        
+    const idCountdown = setInterval(count, 1000);
 }
 
 const beforeStartCount = () => {
@@ -98,6 +100,7 @@ const beforeStartCount = () => {
 const stopCountdown = () => {
     const inputStart: any = document.getElementById('input')
     if(inputStart.value != '') {
+        countDown()
         clearInterval(id)
         let finalHour: any = new Date().getHours()
         let finalMinute: any = new Date().getMinutes()
