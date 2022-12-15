@@ -1,18 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: #230505;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}
-
 .clock {
   position: fixed;
   width: 250px;
@@ -144,8 +129,8 @@ body {
   font-weight: 500;
 }
 
-.countdown div:nth-child(1)::after,
-.countdown div:nth-child(2)::after {
+.countdown div:nth-child(2)::after,
+.countdown div:nth-child(3)::after {
   content: ":";
   position: absolute;
   right: -4px;
@@ -197,4 +182,253 @@ body {
   100% {
     opacity: 1;
   }
+}
+
+/* novo CSS*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+section {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1200px;
+  height: 600px;
+  background: #230505;
+}
+
+section table {
+  position: relative;
+  width: 340px;
+  height: 520px;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.main-form {
+  position: relative;
+  width: 315px;
+  height: 521px;
+  background: #234763;
+  border-radius: 10px;
+}
+
+.user,
+.date {
+  position: absolute;
+  width: 128px;
+  height: 42px;
+  top: 41px;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.main-form .user {
+  left: 14px;
+}
+
+.main-form .date {
+  left: 171px;
+}
+
+.main-form .input {
+  position: absolute;
+  width: 151px;
+  height: 42px;
+  left: 148px;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.main-form .start {
+  top: 101px;
+}
+
+.main-form .interval-start {
+  top: 161px;
+}
+
+.main-form .interval-end {
+  top: 221px;
+}
+
+.main-form .exit {
+  top: 281px;
+}
+
+.main-form .extra-hour-start {
+  top: 341px;
+}
+
+.main-form .extra-hour-end {
+  top: 401px;
+}
+
+.main-form .end {
+  top: 461px;
+}
+
+.main-form .label {
+  position: absolute;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  width: 109px;
+  height: 19px;
+}
+
+.main-form .label-user {
+  left: 14px;
+  top: 15px;
+}
+
+.main-form .label-date {
+  left: 171px;
+  top: 15px;
+}
+
+.main-form .label2 {
+  left: 14px;
+}
+
+.main-form .label-start {
+  top: 114px;
+}
+
+.main-form .label-in-start {
+  top: 175px;
+}
+
+.main-form .label-in-end {
+  top: 235px;
+}
+
+.main-form .label-exit {
+  top: 290px;
+}
+
+.main-form .label-he-start {
+  top: 354px;
+}
+
+.main-form .label-he-end {
+  top: 414px;
+}
+
+.main-form .label-end {
+  top: 474px;
+}
+
+.controls {
+  box-sizing: border-box;
+  position: relative;
+  width: 228px;
+  height: 60px;
+  background: #244864;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.controls .play {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 9px;
+  top: 5px;
+}
+
+.controls .he {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 60px;
+  top: 10px;
+}
+
+.controls .stop {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  left: 100px;
+  top: 10px;
+}
+
+.frame {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  width: 228px;
+  height: 60px;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  margin: 10px;
+  padding: 5px;
+  color: #ffffff;
+}
+
+.frame div:nth-child(2)::after,
+.frame div:nth-child(3)::after {
+  content: ":";
+  position: absolute;
+  right: -4px;
+}
+
+.frame h4 {
+  position: absolute;
+  width: 101px;
+  height: 21px;
+  text-align: center;
+  text-transform: capitalize;
+  top: 1px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.frame:nth-child(2),
+.frame:nth-child(3),
+.frame:nth-child(4) {
+  color: #333333;
+}
+
+.frame div {
+  position: relative;
+  text-align: center;
+  width: 60px;
+  height: 41px;
+  top: 15px;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.countdown {
+  background: #ff0000;
+}
+
+.extra-hour {
+  background: #ffff00;
+}
+
+.now {
+  background: #00ff00;
 }

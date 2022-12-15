@@ -7,82 +7,110 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
     <title>Ponto</title>
   </head>
   <body>
-    <header></header>
     <section>
-      <button id="alertSound" style="display: none"></button>
-      <div class="clock">
-        <div class="circle circle1" style="--clr: #04fc43" id="seconds">
-          <i></i>
-        </div>
-        <div class="circle circle2" style="--clr: #fee800" id="minutes">
-          <i></i>
-        </div>
-        <div class="circle circle3" style="--clr: #ff2972" id="hours">
-          <i></i>
-        </div>
-        <span style="--i: 1"><b>1</b></span>
-        <span style="--i: 2"><b>2</b></span>
-        <span style="--i: 3"><b>3</b></span>
-        <span style="--i: 4"><b>4</b></span>
-        <span style="--i: 5"><b>5</b></span>
-        <span style="--i: 6"><b>6</b></span>
-        <span style="--i: 7"><b>7</b></span>
-        <span style="--i: 8"><b>8</b></span>
-        <span style="--i: 9"><b>9</b></span>
-        <span style="--i: 10"><b>10</b></span>
-        <span style="--i: 11"><b>11</b></span>
-        <span style="--i: 12"><b>12</b></span>
-      </div>
-      <div class="countdown">
-        <div id="hour"></div>
-        <div id="minute"></div>
-        <div id="second"></div>
-      </div>
-      <div class="options">
-        <button id="start">inciar jornada</button>
-        <button id="extraHour">iniciar hora extra</button>
-        <button id="end">finalizar jornada</button>
-      </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Entrada</th>
-            <th>Saída</th>
-            <th>Hora Extra</th>
-          </tr>
-        </thead>
-        <tbody id="calendar-body" class="calendar-body"></tbody>
-      </table>
-      <form
-        name="submit-to-google-sheet"
-        onsubmit="return mySubmitFunction(event)"
-        class="form"
-      >
-        <label for="date">Data</label>
-        <input name="date" type="text" id="date" readonly />
-        <label for="start">Entrada</label>
-        <input name="start" type="text" id="input" readonly />
-        <label for="intervalStart">Intervalo Saída</label>
-        <input name="intervalStart" type="text" id="intervalStart" readonly />
-        <label for="intervalEnd">Intervalo Retorno</label>
-        <input name="intervalEnd" type="text" id="intervalEnd" readonly />
-        <label for="exit">Saída Programada</label>
-        <input name="exit" type="text" id="exit" readonly />
-        <label for="extraHourStart">Hora Extra Inicio</label>
-        <input name="extraHourStart" type="text" id="extraHourStart" readonly />
-        <label for="extraHourEnd">Hora Extra Fim</label>
-        <input name="extraHourEnd" type="text" id="extraHourEnd" readonly />
-        <label for="end">Saída</label>
-        <input name="end" type="text" id="output" readonly />
-        <button type="submit" id="submit" class="buttonSubmit">Send</button>
+      <table></table>
+      <form name="submit-to-google-sheet" class="main-form">
+        <label for="user" class="label label-user">Usuário</label>
+        <input type="text" class="user" readonly />
+
+        <label for="date" class="label label-date">Data</label>
+        <input type="text" name="date" id="date" class="date" readonly />
+
+        <label for="start" class="label label2 label-start">Início</label>
+        <input
+          type="text"
+          name="start"
+          id="start"
+          class="input start"
+          readonly
+        />
+
+        <label for="interval-start" class="label label2 label-in-start"
+          >Intervalo Saída</label
+        >
+        <input
+          type="text"
+          id="intervalStart"
+          name="intervalStart"
+          class="input interval-start"
+          readonly
+        />
+
+        <label for="interval-end" class="label label2 label-in-end"
+          >Intervalo Retorno</label
+        >
+        <input
+          type="text"
+          id="intervalEnd"
+          name="intervalEnd"
+          class="input interval-end"
+          readonly
+        />
+
+        <label for="exit" class="label label2 label-exit"
+          >Horário de Saída</label
+        >
+        <input type="text" name="exit" id="exit" class="input exit" readonly />
+
+        <label for="extra-hour-start" class="label label2 label-he-start"
+          >Hora Extra Início</label
+        >
+        <input
+          type="text"
+          id="extra-hour-start"
+          name="extraHourStart"
+          class="input extra-hour-start"
+          readonly
+        />
+
+        <label for="extra-hour-end" class="label label2 label-he-end"
+          >Hora Extra Fim</label
+        >
+        <input
+          type="text"
+          id="extra-hour-end"
+          name="extraHourEnd"
+          class="input extra-hour-end"
+          readonly
+        />
+
+        <label for="end" class="label label2 label-end">Fim</label>
+        <input type="text" name="end" id="end" class="input end" readonly />
       </form>
+
+      <div class="displays">
+        <div class="frame controls">
+          <button id="buttonStart">iniciar</button>
+          <button id="buttonFinish">parar</button>
+        </div>
+
+        <div class="frame countdown">
+          <h4>tempo restante</h4>
+          <div id="countdownHours">00</div>
+          <div id="countdownMinutes">00</div>
+          <div id="countdownSeconds">00</div>
+        </div>
+
+        <div class="frame extra-hour">
+          <h4>hora extra</h4>
+          <div class="hour">00</div>
+          <div class="minute">00</div>
+          <div class="second">00</div>
+        </div>
+
+        <div class="frame now">
+          <h4>hora</h4>
+          <div id="clockHours">00</div>
+          <div id="clockMinutes">00</div>
+          <div id="clockSeconds">00</div>
+        </div>
+      </div>
     </section>
-    <script src="ts/index.ts" type="text/babel"></script>
+    <script src="ts/clock.ts" type="text/babel"></script>
+    <script src="ts/countdown.ts" type="text/babel"></script>
     <script src="js/axios.js"></script>
   </body>
 </html>
