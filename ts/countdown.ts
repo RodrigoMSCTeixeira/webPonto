@@ -34,7 +34,7 @@ const countDown = () => {
       hours.innerText = h;
       minutes.innerText = m;
       seconds.innerText = s;
-      if(h == 0 && s == 0) {
+      if(h == 0 && m == 0 && s == 0) {
         clearInterval(id)
       } else if (h == 0 && m == 30) {
         notification()
