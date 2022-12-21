@@ -16,7 +16,7 @@
 }
 
 .clock::before {
-  content: "";
+  content: '';
   position: absolute;
   width: 8px;
   height: 8px;
@@ -107,7 +107,7 @@
 
 .counter div:nth-child(1)::after,
 .counter div:nth-child(2)::after {
-  content: ":";
+  content: ':';
   position: absolute;
   right: -4px;
 }
@@ -131,7 +131,7 @@
 
 .countdown div:nth-child(2)::after,
 .countdown div:nth-child(3)::after {
-  content: ":";
+  content: ':';
   position: absolute;
   right: -4px;
 }
@@ -284,7 +284,7 @@ section table {
 
 .main-form .label {
   position: absolute;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -378,16 +378,17 @@ section table {
   width: 228px;
   height: 60px;
   border-radius: 10px;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   margin: 10px;
   padding: 5px;
   color: #ffffff;
+  margin-bottom: 50px;
 }
 
 .frame div:nth-child(2)::after,
 .frame div:nth-child(3)::after {
-  content: ":";
+  content: ':';
   position: absolute;
   right: -4px;
 }
@@ -404,7 +405,6 @@ section table {
   line-height: 15px;
 }
 
-.frame:nth-child(2),
 .frame:nth-child(3),
 .frame:nth-child(4) {
   color: #333333;
@@ -422,13 +422,19 @@ section table {
 }
 
 .countdown {
+  box-shadow: rgb(247, 100, 100) 0px 0px 24px, rgb(247, 100, 100) 0px 16px 56px,
+    rgb(247, 100, 100) 0px 24px 80px;
   background: #ff0000;
 }
 
 .extra-hour {
+  box-shadow: rgb(247, 232, 100) 0px 0px 24px, rgb(247, 232, 100) 0px 16px 56px,
+    rgb(247, 232, 100) 0px 24px 80px;
   background: #ffff00;
 }
 
 .now {
+  box-shadow: rgb(129, 247, 100) 0px 0px 24px, rgb(129, 247, 100) 0px 16px 56px,
+    rgb(129, 247, 100) 0px 24px 80px;
   background: #00ff00;
 }

@@ -36,11 +36,49 @@ const countDown = () => {
       seconds.innerText = s;
       if(h == 0 && m == 0 && s == 0) {
         clearInterval(id)
+        stopCountdown()
       } else if (h == 0 && m == 30) {
         notification()
       }
     }  
    const id = setInterval(count, 1000);
+}
+
+const extraHourCounter = () => {
+  const time = new Date()
+  let hh: any = time.getHours()
+  let mn: any = time.getMinutes()
+  let sc: any = time.getSeconds()
+
+  if(hh == 13 && mn > 30) {
+    hh = hh < 10 ? `0${hh}` : hh;
+    mn = mn < 10 ? `0${mn}` : mn;
+    sc = sc < 10 ? `0${sc}` : sc;
+    let sec: any = 0
+    let min: any = 0
+    let hr: any = 0
+    const heStart: any = document.getElementById("extra-hour-start")
+    heStart.value = `${hh}:${mn}:${sc}`
+  
+    const count = () => { 
+      sec++
+      if(sec > 59) {
+        min++
+        sec = 0
+      }
+      if(min > 59) {
+        hr++
+        min = 0
+      }
+      const hours: any = document.getElementById("hour")
+      const minutes: any = document.getElementById("minute")
+      const seconds: any  = document.getElementById("second")
+      hours.innerText = hr < 10 ? `0${hr}`: hr
+      minutes.innerText = min < 10 ? `0${min}`: min
+      seconds.innerText = sec < 10 ? `0${sec}`: sec
+    }
+    setInterval(count, 1000)
+  }
 }
 
 const beforeStartCount = () => {
@@ -95,7 +133,7 @@ const stopCountdown = () => {
         finalSeconds = finalSeconds < 10 ? `0${finalSeconds}` : finalSeconds
         const inputEnd:any = document.getElementById('end')
         const inputExtraHourStart: any = document.getElementById('extra-hour-start')
-        const inputExtraHourEnd: any = document.getElementById('extra-hour-end"')
+        const inputExtraHourEnd: any = document.getElementById('extra-hour-end')
         inputEnd.value = `${finalHour}:${finalMinute}:${finalSeconds}`
         if(inputExtraHourStart.value != '') {
             inputExtraHourEnd.value = `${finalHour}:${finalMinute}:${finalSeconds}`
@@ -134,10 +172,20 @@ const autoClick = () => {
 };
 
 const optionStart: any = document.getElementById('buttonStart')
+const optionExtraHour: any = document.getElementById('buttonExtraHour')
 const optionFinish: any = document.getElementById('buttonFinish')
+
 optionStart.addEventListener('click', () => {
     beforeStartCount()
 })
+
+optionExtraHour.addEventListener('click', () => {
+  const inputStart: any = document.getElementById('start')
+  if(inputStart.value != '') {
+    extraHourCounter()
+  }
+})
+
 
 optionFinish.addEventListener('click', () => {
     stopCountdown()

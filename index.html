@@ -28,9 +28,9 @@
           readonly
         />
 
-        <label for="interval-start" class="label label2 label-in-start"
-          >Intervalo Saída</label
-        >
+        <label for="interval-start" class="label label2 label-in-start">
+          Intervalo Saída
+        </label>
         <input
           type="text"
           id="intervalStart"
@@ -39,9 +39,9 @@
           readonly
         />
 
-        <label for="interval-end" class="label label2 label-in-end"
-          >Intervalo Retorno</label
-        >
+        <label for="interval-end" class="label label2 label-in-end">
+          Intervalo Retorno
+        </label>
         <input
           type="text"
           id="intervalEnd"
@@ -50,14 +50,14 @@
           readonly
         />
 
-        <label for="exit" class="label label2 label-exit"
-          >Horário de Saída</label
-        >
+        <label for="exit" class="label label2 label-exit">
+          Horário de Saída
+        </label>
         <input type="text" name="exit" id="exit" class="input exit" readonly />
 
-        <label for="extra-hour-start" class="label label2 label-he-start"
-          >Hora Extra Início</label
-        >
+        <label for="extra-hour-start" class="label label2 label-he-start">
+          Hora Extra Início
+        </label>
         <input
           type="text"
           id="extra-hour-start"
@@ -66,9 +66,9 @@
           readonly
         />
 
-        <label for="extra-hour-end" class="label label2 label-he-end"
-          >Hora Extra Fim</label
-        >
+        <label for="extra-hour-end" class="label label2 label-he-end">
+          Hora Extra Fim
+        </label>
         <input
           type="text"
           id="extra-hour-end"
@@ -84,6 +84,7 @@
       <div class="displays">
         <div class="frame controls">
           <button id="buttonStart">iniciar</button>
+          <button id="buttonExtraHour">hora extra</button>
           <button id="buttonFinish">parar</button>
         </div>
 
@@ -96,9 +97,9 @@
 
         <div class="frame extra-hour">
           <h4>hora extra</h4>
-          <div class="hour">00</div>
-          <div class="minute">00</div>
-          <div class="second">00</div>
+          <div id="hour">00</div>
+          <div id="minute">00</div>
+          <div id="second">00</div>
         </div>
 
         <div class="frame now">
